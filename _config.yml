@@ -1,0 +1,4 @@
+url: http://pulliamlab-ufl.github.io
+markdown: kramdown
+exclude: [run.sh,README.md,Makefile]
+highlighter: pygments

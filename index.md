@@ -1,3 +1,8 @@
+---
+layout: page
+title: Summer 2014 in the Pulliam Lab @ UF
+---
+
 # Lab exercises for Summer 2014
 
 ### For 27 June
@@ -26,3 +31,5 @@ Your program should allow you to easily do these things:
 - Calculate the intrinsic period of oscillation for a given set of parameters
 
 *This doesn't necessarily mean that your code already does these things, but that it would take you a negligible amount of time for you to implement them, if someone were to ask you a specific question that requires any of these things.*
+
+$\frac{1}{0}$
