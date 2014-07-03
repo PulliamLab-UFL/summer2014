@@ -46,7 +46,7 @@ flu_sirs_too  <- function(t,y,flu_parms_too){
 rt  <- data.frame(lsoda(c(S=499999,I=1),seq(0,MAXTIME,TIMESTEP),flu_sirs,flu_parms))
 rt2  <- data.frame(lsoda(c(S=499999,I=1),seq(0,MAXTIME,TIMESTEP),flu_sirs_too,flu_parms_too))
 par(mfrow=c(1,2))
-plot(rt$time,rt$I,type="l",xlim=c(0,10), ylim=c(0,4000), main="# infected", xlab="Time(years)", 
+plot(rt$time,rt$I,type="l",xlim=c(0,10), ylim=c(0,32000), main="# infected", xlab="Time(years)", 
      ylab="individuals", cex.lab=1.5, cex.axis=1.25, col="green")
 
 plot(rt2$time,rt2$I,type="l",xlim=c(0,10), ylim=c(0,320000), main="# infected", xlab="Time(years)", 
