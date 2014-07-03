@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     14535,        392]
-NotebookOptionsPosition[     14153,        374]
-NotebookOutlinePosition[     14519,        390]
-CellTagsIndexPosition[     14476,        387]
+NotebookDataLength[     16885,        454]
+NotebookOptionsPosition[     16279,        428]
+NotebookOutlinePosition[     16796,        449]
+CellTagsIndexPosition[     16753,        446]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -26,8 +26,8 @@ Cell[BoxData[
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
-      RowBox[{"soln1", ",", "plot1", ",", " ", "show1"}], "}"}], ",", 
-     "\[IndentingNewLine]", 
+      RowBox[{"soln1", ",", "plot1", ",", "plot2", ",", " ", "show1"}], "}"}],
+      ",", "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{
        RowBox[{"b", "[", "t_", "]"}], " ", ":=", 
@@ -37,6 +37,21 @@ Cell[BoxData[
           RowBox[{"b1", " ", 
            RowBox[{"Cos", "[", 
             RowBox[{"2", " ", "Pi", " ", "t"}], "]"}]}]}], ")"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"xI2", "[", "t_", "]"}], ":=", 
+       RowBox[{"N", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"d", "*", 
+            RowBox[{"b", "[", "t", "]"}]}], "-", "1"}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"d", "*", 
+            RowBox[{"b", "[", "t", "]"}]}], "+", 
+           RowBox[{"L", "*", 
+            RowBox[{"b", "[", "t", "]"}]}]}], ")"}]}]}]}], ";", 
       "\[IndentingNewLine]", 
       RowBox[{"soln1", "=", 
        RowBox[{"NDSolve", "[", 
@@ -137,9 +152,31 @@ Cell[BoxData[
       StyleBox["\[IndentingNewLine]",
        FontSize->16], 
       StyleBox[
+       RowBox[{"plot2", "=", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          RowBox[{"xI2", "[", "t", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "10", ",", "time"}], "}"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"1500", ",", "3000"}], "}"}]}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"{", 
+             RowBox[{
+              StyleBox[
+               RowBox[{"B", "lue"}]], ",", "Thick"}], "}"}], "}"}]}]}], 
+         "]"}]}],
+       FontSize->16], 
+      StyleBox[";",
+       FontSize->16], 
+      StyleBox["\[IndentingNewLine]",
+       FontSize->16], 
+      StyleBox[
        RowBox[{"show1", "=", 
         RowBox[{"Show", "[", 
-         RowBox[{"plot1", ",", 
+         RowBox[{"plot1", ",", "plot2", ",", 
           RowBox[{"AxesLabel", "\[Rule]", 
            RowBox[{"{", 
             RowBox[{"\"\<Time(years)\>\"", ",", "\"\<Number Infected\>\""}], 
@@ -241,7 +278,9 @@ Cell[BoxData[
    3.6133876317896156`*^9, 3.613387639051031*^9}, {3.613387671973914*^9, 
    3.613387692600094*^9}, {3.6133877782309914`*^9, 3.613387783550296*^9}, {
    3.6133878269937806`*^9, 3.6133878625618153`*^9}, {3.6133879026881104`*^9, 
-   3.6133880224779615`*^9}, {3.61338847491984*^9, 3.6133884785510473`*^9}}],
+   3.6133880224779615`*^9}, {3.61338847491984*^9, 3.6133884785510473`*^9}, {
+   3.613398702024701*^9, 3.6133988007293468`*^9}, {3.613398832870185*^9, 
+   3.613398861743837*^9}}],
 
 Cell[BoxData[
  TagBox[
@@ -262,36 +301,41 @@ Cell[BoxData[
        Hold[$CellContext`S10$$], 499999}, 100000, 600000}, {{
        Hold[$CellContext`xI10$$], 1}, 0, 10}}, Typeset`size$$ = {
     576., {161., 164.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
-    Typeset`skipInitDone$$ = True, $CellContext`L$906$$ = 
-    0, $CellContext`b0$907$$ = 0, $CellContext`b1$908$$ = 
-    0, $CellContext`N$909$$ = 0, $CellContext`d$910$$ = 
-    0, $CellContext`time$911$$ = 0, $CellContext`S10$912$$ = 
-    0, $CellContext`xI10$913$$ = 0}, 
+    Typeset`skipInitDone$$ = True, $CellContext`L$1047665$$ = 
+    0, $CellContext`b0$1047666$$ = 0, $CellContext`b1$1047667$$ = 
+    0, $CellContext`N$1047668$$ = 0, $CellContext`d$1047669$$ = 
+    0, $CellContext`time$1047670$$ = 0, $CellContext`S10$1047671$$ = 
+    0, $CellContext`xI10$1047672$$ = 0}, 
     DynamicBox[Manipulate`ManipulateBoxes[
      1, StandardForm, 
       "Variables" :> {$CellContext`b0$$ = 500, $CellContext`b1$$ = 
         0.02, $CellContext`d$$ = 0.02, $CellContext`L$$ = 4, $CellContext`N$$ = 
         500000, $CellContext`S10$$ = 499999, $CellContext`time$$ = 
         20, $CellContext`xI10$$ = 1}, "ControllerVariables" :> {
-        Hold[$CellContext`L$$, $CellContext`L$906$$, 0], 
-        Hold[$CellContext`b0$$, $CellContext`b0$907$$, 0], 
-        Hold[$CellContext`b1$$, $CellContext`b1$908$$, 0], 
-        Hold[$CellContext`N$$, $CellContext`N$909$$, 0], 
-        Hold[$CellContext`d$$, $CellContext`d$910$$, 0], 
-        Hold[$CellContext`time$$, $CellContext`time$911$$, 0], 
-        Hold[$CellContext`S10$$, $CellContext`S10$912$$, 0], 
-        Hold[$CellContext`xI10$$, $CellContext`xI10$913$$, 0]}, 
+        Hold[$CellContext`L$$, $CellContext`L$1047665$$, 0], 
+        Hold[$CellContext`b0$$, $CellContext`b0$1047666$$, 0], 
+        Hold[$CellContext`b1$$, $CellContext`b1$1047667$$, 0], 
+        Hold[$CellContext`N$$, $CellContext`N$1047668$$, 0], 
+        Hold[$CellContext`d$$, $CellContext`d$1047669$$, 0], 
+        Hold[$CellContext`time$$, $CellContext`time$1047670$$, 0], 
+        Hold[$CellContext`S10$$, $CellContext`S10$1047671$$, 0], 
+        Hold[$CellContext`xI10$$, $CellContext`xI10$1047672$$, 0]}, 
       "OtherVariables" :> {
        Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
         Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
         Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
          Typeset`skipInitDone$$}, "Body" :> 
-      Module[{$CellContext`soln1$, $CellContext`plot1$, $CellContext`show1$}, \
-$CellContext`b[
+      Module[{$CellContext`soln1$, $CellContext`plot1$, $CellContext`plot2$, \
+$CellContext`show1$}, $CellContext`b[
            Pattern[$CellContext`t$, 
             Blank[]]] := $CellContext`b0$$ (
-           1 + $CellContext`b1$$ 
-            Cos[2 Pi $CellContext`t$]); $CellContext`soln1$ = 
+           1 + $CellContext`b1$$ Cos[2 Pi $CellContext`t$]); $CellContext`xI2[
+           Pattern[$CellContext`t$, 
+            
+            Blank[]]] := $CellContext`N$$ (($CellContext`d$$ \
+$CellContext`b[$CellContext`t$] - 
+            1)/($CellContext`d$$ $CellContext`b[$CellContext`t$] + \
+$CellContext`L$$ $CellContext`b[$CellContext`t$])); $CellContext`soln1$ = 
          NDSolve[{
            Derivative[
              1][$CellContext`S1][$CellContext`t] == ($CellContext`N$$ - \
@@ -310,8 +354,11 @@ $CellContext`xI1[$CellContext`t]/$CellContext`d$$, $CellContext`S1[
            ReplaceAll[
             $CellContext`xI1[$CellContext`t], $CellContext`soln1$], \
 {$CellContext`t, 10, $CellContext`time$$}, PlotRange -> {1500, 3000}, 
-           PlotStyle -> {{Red, Thick}}]; $CellContext`show1$ = 
-         Show[$CellContext`plot1$, 
+           PlotStyle -> {{Red, Thick}}]; $CellContext`plot2$ = Plot[
+           $CellContext`xI2[$CellContext`t], {$CellContext`t, 
+            10, $CellContext`time$$}, PlotRange -> {1500, 3000}, 
+           PlotStyle -> {{Blue, Thick}}]; $CellContext`show1$ = 
+         Show[$CellContext`plot1$, $CellContext`plot2$, 
            AxesLabel -> {"Time(years)", "Number Infected"}, AxesOrigin -> 
            Automatic, ImageSize -> Large]], 
       "Specifications" :> {{{$CellContext`L$$, 4}, 1, 10, Appearance -> 
@@ -338,8 +385,11 @@ $CellContext`xI1[$CellContext`t]/$CellContext`d$$, $CellContext`S1[
    3.613387592422364*^9}, 3.6133876419601974`*^9, 3.6133876747530727`*^9, 
    3.6133877867264776`*^9, {3.613387830753996*^9, 3.6133878649699526`*^9}, {
    3.613387919260058*^9, 3.613387942913411*^9}, 3.613387975047249*^9, 
-   3.6133884091380773`*^9, 3.6133884826062794`*^9}]
+   3.6133884091380773`*^9, 3.6133884826062794`*^9, 3.6133895818491526`*^9, 
+   3.6133958378268785`*^9, {3.6133988073867273`*^9, 3.613398863149917*^9}}]
 }, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
@@ -370,10 +420,19 @@ Cell[BoxData[
        FontSize->16], ",", "0", ",", "1", ",", 
       RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], " ", "}"}]}], 
    "*)"}]}]], "Input",
- CellChangeTimes->{{3.6133865397841563`*^9, 3.6133865406072035`*^9}}]
+ CellChangeTimes->{{3.6133865397841563`*^9, 3.6133865406072035`*^9}}],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{3.6133988630449114`*^9}]
+}, Open  ]]
 },
-WindowSize->{1350, 633},
+WindowSize->{1336, 633},
 WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrintingCopies->1,
+PrintingPageRange->{32000, 32000},
+PrintingOptions->{"Magnification"->1.,
+"PaperOrientation"->"Portrait",
+"PaperSize"->{612, 792}},
 CellContext->Notebook,
 FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (January 25, 2013)",
 StyleDefinitions->"Default.nb"
@@ -390,10 +449,13 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[579, 22, 7432, 221, 282, "Input"],
-Cell[8014, 245, 5219, 95, 438, "Output"]
+Cell[579, 22, 8763, 260, 322, "Input"],
+Cell[9345, 284, 5898, 104, 406, "Output"]
 }, Open  ]],
-Cell[13248, 343, 901, 29, 114, "Input"]
+Cell[CellGroupData[{
+Cell[15280, 393, 901, 29, 114, "Input"],
+Cell[16184, 424, 79, 1, 31, "Output"]
+}, Open  ]]
 }
 ]
 *)
