@@ -1,4 +1,4 @@
-#Dushoff et al. deterministic model
+#Dushoff et al. deterministic model: Luke - summer 2014 
 library(deSolve)
 
 flu_parms  <- c(n=500000, #population size
@@ -16,7 +16,7 @@ flu_parms_too  <- c(n=500000, #population size
 )
 
 
-#contact rate fuction
+#contact rate function
 beta_t  <- function(tx, B_0, B_1){
     B_0*(1+B_1*cos(2*pi*tx))
 }
@@ -24,7 +24,7 @@ beta_t  <- function(tx, B_0, B_1){
 MAXTIME  <- 100
 TIMESTEP  <- 0.005
 
-#SIRS fuction
+#SIRS function
 
 flu_sirs  <- function(t,y,flu_parms){
   with(c(as.list(y),flu_parms),{
