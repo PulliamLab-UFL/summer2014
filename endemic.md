@@ -3,6 +3,9 @@ layout: page
 title: Summer 2014 in the Pulliam Lab @ UF
 ---
 
+## Dushoff _et al_. 2004 PNAS
+
+#### Calculating the endemic equilibrium
 
 The equations from the paper are:
 
