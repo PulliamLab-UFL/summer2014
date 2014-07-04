@@ -32,3 +32,8 @@ Your program should allow you to easily do these things:
 
 *This doesn't necessarily mean that your code already does these things, but that it would take you a negligible amount of time for you to implement them, if someone were to ask you a specific question that requires any of these things.*
 
+### For 11 July
+
+You should come to lab meeting with a final version of your code that meets the criteria above. Note that, if you're paying attention, you will encounter some difficulty with the first benchmark, _even if your code is working properly_!
+
+Please also review the [endemic equilibrium](endemic.html) calculations if you found them difficult to follow during lab meeting. 
