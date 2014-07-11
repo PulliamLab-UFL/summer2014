@@ -92,11 +92,13 @@ par(mfcol=c(2,1),mar=c(2,2,1,0))
 ts1A <- runSIR(fig1A,col="red",lwd=3)
 ts1B <- runSIR(fig1B,col="red",lwd=3)
 
-plotSIR(ts1A,xmin=0,lwd=3)
-ts1A.dfe <- runSIR(fig1A,init=c(S=unname(fig1A["N"]-1),I=1),col="red",lwd=3,xmin=0)
-
-plotSIR(ts1B,xmin=0,lwd=3)
-ts1B.dfe <- runSIR(fig1B,init=c(S=unname(fig1A["N"]-1),I=1),col="red",lwd=3,xmin=0)
+### Transient dynamics
+# Fig 1A parameters
+plotSIR(ts1A,xmin=0,lwd=3,col="red",main="From EE") # From EE
+ts1A.dfe <- runSIR(fig1A,init=c(S=unname(fig1A["N"]-1),I=1),col="blue",lwd=3,xmin=0,main="From naive population") # From (near) DFE
+# Fig 1B parameters
+plotSIR(ts1B,xmin=0,lwd=3,col="red",main="From EE") # From EE
+ts1B.dfe <- runSIR(fig1B,init=c(S=unname(fig1A["N"]-1),I=1),col="blue",lwd=3,xmin=0,main="From naive population") # From (near) DFE
 
 intrinsicPeriod(fig1A)
 intrinsicPeriod(fig1B)
