@@ -31,4 +31,4 @@ Your program should allow you to easily do these things:
 
 You should come to lab meeting with a final version of your code that meets the criteria above. Note that, if you're paying attention, you will encounter some difficulty with the first benchmark, _even if your code is working properly_!
 
-Please also review the [endemic equilibrium](endemic.html) calculations if you found them difficult to follow during lab meeting. 
+Please also review the [endemic equilibrium](http://pulliamlab-ufl.github.io/summer2014/endemic.html) calculations if you found them difficult to follow during lab meeting. 
