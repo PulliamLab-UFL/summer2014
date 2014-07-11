@@ -58,9 +58,9 @@ fig1B <- c(N = 500000,
 init1B <- endemicEq(fig1B)
 
 
-runSIR <- function(params,time.out = seq(0,20,.05),plot=T,...){
+runSIR <- function(params,init = endemicEq(params), time.out = seq(0,20,.05),plot=T,...){
   ts <- lsoda(
-    y = endemicEq(params),        # Initial conditions for population
+    y = init,        # Initial conditions for population
     times = time.out,             # Timepoints for evaluation
     func = sir,                   # Function to evaluate
     parms = params                # Vector of parameters
@@ -72,10 +72,10 @@ runSIR <- function(params,time.out = seq(0,20,.05),plot=T,...){
   return(out)
 }
 
-plotSIR <- function(run,compare=F,ymax=4000,...){
+plotSIR <- function(run,compare=F,xmin=10,ymax=4000,...){
   with(run,{
     plot(ts$time,ts$I,
-         xlim=c(10,20),ylim=c(0,ymax),
+         xlim=c(xmin,20),ylim=c(0,ymax),
          xlab="Time (years)",ylab="Number infected",         
          type="l",bty="n",...)
     axis(2,seq(0,ymax,ymax/8),labels=NA,tcl=-.2)
@@ -91,6 +91,12 @@ plotSIR <- function(run,compare=F,ymax=4000,...){
 par(mfcol=c(2,1),mar=c(2,2,1,0))
 ts1A <- runSIR(fig1A,col="red",lwd=3)
 ts1B <- runSIR(fig1B,col="red",lwd=3)
+
+plotSIR(ts1A,xmin=0,lwd=3)
+ts1A.dfe <- runSIR(fig1A,init=c(S=unname(fig1A["N"]-1),I=1),col="red",lwd=3,xmin=0)
+
+plotSIR(ts1B,xmin=0,lwd=3)
+ts1B.dfe <- runSIR(fig1B,init=c(S=unname(fig1A["N"]-1),I=1),col="red",lwd=3,xmin=0)
 
 intrinsicPeriod(fig1A)
 intrinsicPeriod(fig1B)
