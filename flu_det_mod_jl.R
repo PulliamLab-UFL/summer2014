@@ -67,6 +67,10 @@ plot.flu.sim(a)
 b<-flu.sim(N=500000,dur.imm=8,dur.inf=0.025,beta0=400,beta1=0.04)
 plot.flu.sim(b,xax=c(0,20))
 
+# without seasonal forcing
+a.1<-flu.sim(N=500000,dur.imm=4,dur.inf=0.02,beta0=500,beta1=0)
+plot.flu.sim(a.1,xax=c(0,20))
+
 # change in initial conditions to endemic equilibrium
 # need to know number of infecteds and number of susceptibles at endemic equilibrium
 
