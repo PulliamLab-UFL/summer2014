@@ -36,4 +36,13 @@ Your program should allow you to easily do these things:
 
 You should come to lab meeting with a final version of your code that meets the criteria above. Note that, if you're paying attention, you will encounter some difficulty with the first benchmark, _even if your code is working properly_!
 
-Please also review the [endemic equilibrium](endemic.html) calculations if you found them difficult to follow during lab meeting. 
+Please also review the [endemic equilibrium](endemic.html) calculations if you found them difficult to follow during lab meeting.
+
+### For 18 July
+
+Write code for the stochastic model in Dushoff *et al*. 2004. To get started with the Gillespie algorithm, and implementing it in R:
+
+- Review page 6-11 of [this presentation](http://plaza.ufl.edu/pulliam/training/icddrb/Welcome_files/Pulliam_ICDDRB_Day2.pdf) and the references cited therein.
+- Follow this [step-by-step guide](http://yushan.mcmaster.ca/theobio/mmed/index.php/Gillespie) to learn how to write a Gillespie implementation of the SIRS model in R; feel free to look at the example code if you get stuck
+
+This week's lab meeting will be a troubleshooting session, guided by [Tom](http://pulliamlab-ufl.github.io/people/hladish.html). Benchmarks to aim for with your code will be added after the meeting, and you should make any necessary modifications to meet them by July 25.
