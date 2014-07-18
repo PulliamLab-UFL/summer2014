@@ -35,7 +35,7 @@ det.mod<-function(t,y,params){
 	return(list(xdot))
 }
 
-flu.sim<-function(N,beta0,beta1,dur.imm,dur.inf,i0=1/N,s0=N-i0*N,t.max=20,ts=0.001){
+flu.sim<-function(N,beta0,beta1,dur.imm,dur.inf,i0=1,s0=N-i0*N,t.max=20,ts=0.001){
 	I.0<-i0
 	S.0<-s0
 	# timesteps
@@ -54,7 +54,7 @@ a<-flu.sim(N=500000,dur.imm=4,dur.inf=0.02,beta0=500,beta1=0.02)
 plot.flu.sim(a)
 # b strong resonance
 b<-flu.sim(N=500000,dur.imm=8,dur.inf=0.025,beta0=400,beta1=0.02)
-plot.flu.sim(b)
+plot.flu.sim(b,xax=c(0,20))
 
 # results using params detailed in the methods qualitatively similar but amplitude of oscillations smaller
 # beta1 of 0.02 only produced a contact rate that varies from 490 to 510 giving R0 of 9.8 and 10.2
