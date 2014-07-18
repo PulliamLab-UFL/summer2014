@@ -28,10 +28,8 @@ event <- function(time=t, x, S,I,N=pop.size,b1=beta1, b0=beta0,L=dur.imm, beta=b
     I <- I+1
   }else{
     if(dd<(inf.rate+recov.rate)/tot.rate){
-      S <- S
       I <- I-1 	  
     }else{
-      I <- I
       S <- S+1
     }
   }
