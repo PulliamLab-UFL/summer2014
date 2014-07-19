@@ -33,14 +33,14 @@ Beta <- function(x,B0,B1){
   B0*(1+B1*cos(2*pi*x))
 }
 
-SIRS.onestep <- function (t,x, params,...){
+SIRS.onestep <- function (t,x, params, ...){
   with(c(as.list(x),params),{
     
     S <- x[1]                ## susceptibles
     I <- x[2]                ## infectious individuals
     
     rates <- c(
-      transmission = Beta(t)*I*S/N, 
+      transmission = Beta(t,beta.0,beta.1)*I*S/N, 
       recovery = I/D, 
       immunity.loss = (N-S-I)/L 
     )
@@ -56,7 +56,7 @@ SIRS.onestep <- function (t,x, params,...){
     
     if (total.rate>0) {
       dt <- rexp(n=1,rate=total.rate)             # time until next event
-      event <- sample.int(n=2,size=1,prob=rates)  # determines what event happens
+      event <- sample.int(n=3,size=1,prob=rates)  # determines what event happens
       dx <- c(dt,transitions[[event]])            # updates S and I based on the event
     } else {
       dt <- Inf
@@ -76,7 +76,7 @@ SIRS.sim <- function(params, t0, times, step.fn, ...) {
     for (k in seq_along(times)) {
       if (t < times[k]) {
         repeat {
-          dx <- step.fn(x,params,..)
+          dx <- step.fn(t,x,params,...)
           t <- t+dx[1]
           if (t >= times[k]) {
             result[k,-1] <- x[-1]
@@ -92,6 +92,6 @@ SIRS.sim <- function(params, t0, times, step.fn, ...) {
   result
 }
 
-
-parms <- c(S.0=499999,I.0=1, parms1a)   #parms1a["N"]-1,I.0=1)
+parms <- c(S.0=499,I.0=1, parms1a)   #parms1a["N"]-1,I.0=1)
 x <- SIRS.sim(params=parms,t0=0,times=seq(from=0,to=14),step.fn=SIRS.onestep)
+plot(I~time,type='o',data=as.data.frame(x))
