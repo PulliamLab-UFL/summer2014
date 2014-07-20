@@ -13,7 +13,7 @@ Code the deterministic model in Dushoff et al. 2004. If you want to do this in a
 - Complete the [R Studio tutorial and R tutorials 1-3](http://lalashan.mcmaster.ca/theobio/mmed/index.php/Introduction_to_R), if you haven't already done this and are unfamiliar with either of these programs (or if you need a refresher).
 - Complete the [lab on ODE's in R](http://lalashan.mcmaster.ca/theobio/mmed/index.php/Lab_1:_ODE_models_in_R)
 
-During the lab meeting we'll discuss issues that arose and troubleshoot each other's code, as needed. We'll also look at some of the issues we discussed today, such as what happens when you initialize at the endemic equilibrium (with and without seasonal forcing).
+During the lab meeting we'll discuss issues that arose and troubleshoot each other's code, as needed. We'll also look at some of the issues we discussed today, such as what happens when you initialize at the [endemic equilibrium](http://pulliamlab-ufl.github.io/summer2014/endemic.html) (with and without seasonal forcing).
 
 #### Benchmarks
 
@@ -26,3 +26,19 @@ Your program should allow you to easily do these things:
 - Calculate the intrinsic period of oscillation for a given set of parameters
 
 *This doesn't necessarily mean that your code already does these things, but that it would take you a negligible amount of time for you to implement them, if someone were to ask you a specific question that requires any of these things.*
+
+### For 11 July
+
+You should come to lab meeting with a final version of your code that meets the criteria above. Note that, if you're paying attention, you will encounter some difficulty with the first benchmark, _even if your code is working properly_!
+
+Please also review the [endemic equilibrium](http://pulliamlab-ufl.github.io/summer2014/endemic.html) calculations if you found them difficult to follow during lab meeting. 
+
+### For 18 July
+
+Write code for the stochastic model in Dushoff *et al*. 2004. To get started with the Gillespie algorithm, and implementing it in R:
+
+- Review page 6-11 of [this presentation](http://plaza.ufl.edu/pulliam/training/icddrb/Welcome_files/Pulliam_ICDDRB_Day2.pdf) and the references cited therein.
+- Follow this [step-by-step guide](http://yushan.mcmaster.ca/theobio/mmed/index.php/Gillespie) to learn how to write a Gillespie implementation of the SIRS model in R; feel free to look at the example code if you get stuck
+
+This week's lab meeting will be a troubleshooting session, guided by [Tom](http://pulliamlab-ufl.github.io/people/hladish.html). Benchmarks to aim for with your code will be added after the meeting, and you should make any necessary modifications to meet them by July 25.
+
