@@ -31,26 +31,32 @@ event <- function(time,S,I,params){
   })
 }
 
-testParams <- c(N = 500,
+gsim <- function(t,y,params){
+  with(as.list(y),{
+    ts <- data.frame(time=min(t),S=round(S),I=round(I))
+    nextEvent <- ts
+    while(nextEvent$time<max(t)&nextEvent$I>0){
+      nextEvent <- event(nextEvent$time,nextEvent$S,nextEvent$I,params)
+      ts <- rbind(ts,nextEvent)
+    }
+    return(ts)
+  })
+}
+
+testParams <- c(N = 50000,
                 LL = 4,
                 DD = 0.02,
                 beta0 = 500,
                 beta1 = 0.04)
 testInit <- endemicEq(testParams)
 
-gsim <- function(t,y,params){
-  with(as.list(y),{
-    ts <- data.frame(time=min(t),S=round(S),I=round(I))
-    next.time <- ts
-    while(next.time$time<max(t)&next.time$I>0){
-      next.time <- event(next.time$time,next.time$S,next.time$I,params)
-      ts <- rbind(ts,next.time)
-    }
-    return(ts)
-  })
-}
+startTime <- Sys.time()
+tsTest <- gsim(seq(0,10,.05),endemicEq(testParams),testParams)
+endTime <- Sys.time()
+print(endTime-startTime)
 
-tsTest <- gsim(seq(0,20,.05),endemicEq(testParams),testParams)
+tsDetTest <- runSIR(testParams,col="red",lwd=3,xmin=0,ymax=500)
+lines(tsTest$time,tsTest$I,col="blue",lwd=2)
 
 startTime <- Sys.time()
 ts <- gsim(seq(0,.1,.05),endemicEq(fig1A),fig1A)
