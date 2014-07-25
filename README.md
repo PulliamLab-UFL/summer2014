@@ -56,3 +56,7 @@ Your program should allow you to easily do these things:
 - Visually compare the ODE model trajectory to a single realization of the Gillespie implementation, with the same parameter values and initial conditions
 
 *Again, this doesn't necessarily mean that your code already does these things, but that it would take you a negligible amount of time for you to implement them, if someone were to ask you a specific question that requires any of these things.*
+
+### For 1 August
+
+Reproduce Figure 1 (both panels). You may want to use the GillespieSSA R package to do this, though you should feel free to do it through other means (e.g., coding the algorithm in C or C++, using an approximate algorithm that you write yourself, or even writing a more efficient pure R implementation
