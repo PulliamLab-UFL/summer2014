@@ -56,7 +56,7 @@ You should come to lab meeting with a final version of your code that meets the 
 Your program should allow you to easily do these things:
 
 - Output the time until extinction for a single run of the Gillespie simulation
-- Return the amount of time it takes to run a single realization of the Gillespie algorithm
+- Return the amount of (compute) time it takes to run a single realization of the Gillespie algorithm
 - Explore the effect of using different parameter values on the dynamics observed (for an arbitrary population size)
 - Visually compare the ODE model trajectory to a single realization of the Gillespie implementation, with the same parameter values and initial conditions
 
