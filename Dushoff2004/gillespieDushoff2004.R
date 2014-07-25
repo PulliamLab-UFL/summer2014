@@ -56,6 +56,7 @@ endTime <- Sys.time()
 print(endTime-startTime)
 
 tsDetTest <- runSIR(testParams,col="red",lwd=3,xmin=0,ymax=500)
+# load("temp.Rdata")
 lines(tsTest$time,tsTest$I,col="blue",lwd=2)
 
 startTime <- Sys.time()
