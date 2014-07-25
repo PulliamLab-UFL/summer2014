@@ -1,0 +1,58 @@
+library(deSolve)
+
+flu_parms  <- c(n=500000, #population size
+               L=4, #duration of immunity (years)
+               D=0.02, #mean infectious period (years)
+               B0=500, #contacts per year
+               B1=0.02 #scaler 
+)
+
+
+#Event                      
+#(S,I,R) -> (S-1,I+1,R)   
+#(S,I,R) -> (S,I-1,R+1)
+#(S,I,R) -> (S+1,I,R-1)
+
+
+#contact rate fuction
+beta_t  <- function(t, B_0, B_1, B_2){
+    B_0*(1+B_1*cos(B_2*2*pi*tx))
+}
+
+Event_func  <- function(S, I, t){
+  beta_time = beta_t(t,B_0,B_1)
+  StoI = beta_time*I*S/n
+  ItoR = I/D
+  RtoS = (n-S-I)/l
+  rate = StoI + ItoR + RtoS
+  event = rexp(1, rate)
+  r=runif(1)
+  if (r < StoI/rate){
+    S = S - 1
+    I = S + 1
+  }
+  else if (r < (StoI + ItoR)/rate){
+    S = S + 1
+  }
+  t = t + event
+  return(list(S=S,I=I,t=t))
+}
+
+while(t<20 & I > 0){
+  output= next_event(flu_parms,I,time)
+  S =output$S
+  I=output$I
+  t=output$t
+}
+
+
+#SIRS fuction
+
+flu_sirs  <- function(t,y,flu_parms){
+  with(c(as.list(y),flu_parms),{
+    
+    dS_dt <- (n-S-I)/L-beta_t(t,B0,B1)*I*S/n
+    dI_dt <- beta_t(t,B0,B1)*I*S/n-I/D
+    list(c(dS_dt,dI_dt))
+  })
+}  
