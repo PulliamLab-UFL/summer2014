@@ -26,13 +26,21 @@ init.time<-0
 max.time<-20
 
 # params
-trans.rate<-500
+beta.zero<-500
+beta.one<-0.02
 inf<-0.02
 imm<-4
-pop<-5000
+pop<-500
   
 # function with constant beta first to test code works
-flu.func<-function(time,S,I,R,beta=trans.rate,dur.inf=inf,dur.imm=imm,N=pop){
+flu.func<-function(time,S,I,R,beta0=beta.zero,beta1=beta.one,dur.inf=inf,dur.imm=imm,N=pop){
+
+  beta.t.func<-function(b0,b1,t){
+    beta.t<-b0*(1 + b1*cos(2*pi*(t)))
+    return(beta.t)
+  }
+  beta<-beta.t.func(b0=beta0,b1=beta1,t=time)
+  
 s.i<- beta*I*S/N
 i.r<- I/dur.inf
 r.s<- (N-S-I)/dur.imm
@@ -67,5 +75,5 @@ while(t.next$time< max.time & t.next$I>0){
   if (t.next$I==0) t.next$I=1
 }
 # very slow!
-plot(flu.time$time,flu.time$I,type="l")
+plot(flu.time$time,flu.time$I,type="l",ylim=c(0,50))
 
