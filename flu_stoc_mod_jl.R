@@ -26,11 +26,11 @@ init.time<-0
 max.time<-20
 
 # params
-beta.zero<-500
+beta.zero<-400
 beta.one<-0.02
-inf<-0.02
+inf<-0.025
 imm<-4
-pop<-500
+pop<-5000
   
 # function with constant beta first to test code works
 flu.func<-function(time,S,I,R,beta0=beta.zero,beta1=beta.one,dur.inf=inf,dur.imm=imm,N=pop){
@@ -72,8 +72,7 @@ t.next<-flu.time
 while(t.next$time< max.time & t.next$I>0){
   t.next<-flu.func(time=t.next$time,S=t.next$S,I=t.next$I,R=t.next$R)
   flu.time<-rbind(flu.time,t.next)
-  if (t.next$I==0) t.next$I=1
 }
-# very slow!
-plot(flu.time$time,flu.time$I,type="l",ylim=c(0,50))
+
+plot(flu.time$time,flu.time$I,type="l",ylim=c(0,500))
 
