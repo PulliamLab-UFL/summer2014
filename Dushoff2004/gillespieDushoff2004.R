@@ -43,7 +43,7 @@ gsim <- function(t,y,params){
   })
 }
 
-testParams <- c(N = 50000,
+testParams <- c(N = 5000,
                 LL = 4,
                 DD = 0.02,
                 beta0 = 500,
@@ -51,11 +51,16 @@ testParams <- c(N = 50000,
 testInit <- endemicEq(testParams)
 
 startTime <- Sys.time()
-tsTest <- gsim(seq(0,10,.05),endemicEq(testParams),testParams)
+tsTest <- gsim(seq(0,10,.05),round(endemicEq(testParams)),testParams)
 endTime <- Sys.time()
 print(endTime-startTime)
 
-tsDetTest <- runSIR(testParams,col="red",lwd=3,xmin=0,ymax=500)
+startTime <- Sys.time()
+tsTest <- gsim(seq(0,10,.05),c(S=4999,I=1),testParams)
+endTime <- Sys.time()
+print(endTime-startTime)
+
+tsDetTest <- runSIR(testParams,col="red",lwd=3,xmin=0,ymax=50)
 # load("temp.Rdata")
 lines(tsTest$time,tsTest$I,col="blue",lwd=2)
 
