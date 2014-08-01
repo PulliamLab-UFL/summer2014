@@ -19,11 +19,11 @@ double beta(double t, const Par& p) {
     return p.b0 * (1 + p.b1 * cos(p.b2*2*pi*t) );
 }
 
-double endemic_S(const Par &p) { return p.n/(p.b0*p.d); }
-double endemic_I(const Par &p) { return (p.n- (p.n/(p.b0*p.d)))/(1+p.l/p.d); }
+double endemic_S(const Par &p, double beta) { return p.n/(beta*p.d); }
+double endemic_I(const Par &p, double beta) { return (p.n- (p.n/(beta*p.d)))/(1+p.l/p.d); }
 
 
-void next_event(double &t, int &s, int &i, const Par &p) {
+double next_event(double &t, int &s, int &i, const Par &p) {
     const double beta_t = beta(t, p);
     const double StoI = beta_t*i*s/p.n;
     const double ItoR = i/p.d;
@@ -41,6 +41,7 @@ void next_event(double &t, int &s, int &i, const Par &p) {
         s = s + 1;
     }
     t = t + event_time;
+    return beta_t;
 }
 
 int main() {
@@ -52,13 +53,19 @@ int main() {
     p.l  = 4;
     p.d  = 0.02;
 
-    int i = endemic_I(p) + 1;
-    int s = endemic_S(p) - 1;
+    int i = endemic_I(p, p.b0) + 1;
+    int s = endemic_S(p, p.b0) - 1;
     double t = 0.0;
-    cout << "s, i: " << s << ", " << i << endl;
+    //cout << "s, i: " << s << ", " << i << endl;
 
+    const double print_step = 0.01;
+    double last_print = 10;
+    double beta;
     while(t < 20 and i > 0) {
-        next_event(t, s, i, p);
-        cout << t << " " << i << endl;
+        beta = next_event(t, s, i, p);
+        if (t > last_print) {
+            cout << t << " " << i << " " << endemic_I(p,beta) << endl;
+            last_print += print_step;
+        }
     }
 }
