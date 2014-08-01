@@ -23,12 +23,12 @@
 # initial time
 init.time<-0
 # end of time
-max.time<-20
+max.time<-10
 
 # params
-beta.zero<-400
-beta.one<-0.02
-inf<-0.025
+beta.zero<-500
+beta.one<-0.04
+inf<-0.02
 imm<-4
 pop<-5000
   
@@ -67,6 +67,7 @@ if(rand.no < s.i/lambda_event){
 return(data.frame(time=t.next,S=S,I=I,R=R))
 }
 
+ptm<-proc.time()
 flu.time<-data.frame(time=init.time,S=pop-1,I=1,R=0)
 t.next<-flu.time
 while(t.next$time< max.time & t.next$I>0){
@@ -74,5 +75,7 @@ while(t.next$time< max.time & t.next$I>0){
   flu.time<-rbind(flu.time,t.next)
 }
 
-plot(flu.time$time,flu.time$I,type="l",ylim=c(0,500))
+proc.time() -ptm
+
+plot(flu.time$time,flu.time$I,type="l")
 
