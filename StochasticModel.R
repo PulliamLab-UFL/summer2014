@@ -14,7 +14,7 @@
 
 # Parameter values taken from Fig 1a
 
-parms1a <- c(N=5500,          # total population size
+parms1a <- c(N=50000,          # total population size
              L=4,								# average duration of immunity (in years)
              D=0.02, 						# mean infectious period (in years)
              beta.0=500,				# R0/D (individuals/year)
@@ -57,8 +57,8 @@ SIRS.onestep <- function (t,x, params, ...){
     if (total.rate>0) {
       dt <- rexp(n=1,rate=total.rate)             # time until next event
       event <- sample.int(n=3,size=1,prob=rates)  # determines what event happens
-print(rates)
-print(event)
+#print(rates)
+#print(event)
       dx <- c(dt,transitions[[event]])            # updates S and I based on the event
     } else {
       dt <- Inf
@@ -104,7 +104,7 @@ SIRS.sim <- function(params, t0, times, step.fn, ...) {
 #}
 }
 
-parms <- c(S.0=5000,I.0=220, parms1a)   #parms1a["N"]-1,I.0=1)
+parms <- c(S.0=5000,I.0=224, parms1a)  
 x <- SIRS.sim(params=parms,t0=0,times=seq(from=0,to=14),step.fn=SIRS.onestep)
 plot(I~time,type='o',data=as.data.frame(x))
 

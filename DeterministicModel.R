@@ -11,7 +11,7 @@ parms1a <- c(N=500000,          # total population size
 					 L=4,								# average duration of immunity (in years)
 					 D=0.02, 						# mean infectious period (in years)
 					 beta.0=500,				# R0/D (individuals/year)
-					 beta.1=0.02       # scaling factor for contact function
+					 beta.1=0.04       # scaling factor for contact function
 )
 
 parms1b <- c(N=500000,          # total population size
@@ -42,6 +42,15 @@ R.0 = parms["D"]*parms["beta.0"]
 oscillation.period = 2*pi*sqrt(parms["D"]*parms["L"]/(R.0)) 
 names(oscillation.period)="intrinsic period of oscillation"
 oscillation.period
+
+# calculate endemic equilibrium
+endemic <- function(params){
+  with(as.list(params),{
+    S.star <- N/(beta.0*D)
+    I.star <- (N-S.star)/(1+L/D)
+    return(c(S=S.star,I=I.star))
+  })
+}
 
 sirs.seasonal <- function(t,y,parms){
 	with(c(as.list(y),parms),{ 
