@@ -37,13 +37,13 @@ demo(sir)
     }
 
   # default constant contact parameter
-  b = 100  
+  b = 400  
 
   # Define system
-   x0 <- c(S=5000, I=224, R=parms1a["N"])                      # Initial state vector
-   x02 <- c(S=5000,I=2240)
+   #x0 <- c(S=5000, I=140, R=parms1a["N"]-S-I)                      # Initial state vector
+   x02 <- c(S=5000,I=224)
 
-   nu <- matrix(c(-1,0,1,1,-1,0,1,0,-1),nrow=3,byrow=T) # State-change matrix
+  # nu <- matrix(c(-1,0,1,1,-1,0,0,1,-1),nrow=3,byrow=T) # State-change matrix
    nu2 <- matrix(c(-1,0,1,1,-1,0),nrow=2,byrow=T) # State-change matrix
 
   # a  <- c("Beta(t,beta.0,beta.1)*I*S/N", "I/D","(N-S-I)/L")                # Propensity vector
@@ -65,9 +65,11 @@ demo(sir)
    # Optimized tau-leap method
      set.seed(2)
 
-   out <- ssa(x0,a,nu,parms1a,tf,method="OTL",simName,verbose=TRUE,consoleInterval=1)
-   out2 <- ssa(x02,a,nu2,parms1a,tf,method="OTL",simName,verbose=TRUE,consoleInterval=1)
+   #out <- ssa(x0,a,nu,parms1a,tf,method="OTL",simName,verbose=TRUE,consoleInterval=1)
+   out2 <- ssa(x02,a,nu2,parms1a,tf,method="BTL",simName,verbose=TRUE,consoleInterval=1)
 
+dat<-out2$dat  
+
+  # ssa.plot(out2,show.title=FALSE,show.legend=FALSE) 
   
-   ssa.plot(out2,show.title=FALSE,show.legend=FALSE) 
-
+    plot(dat[,1],dat[,3],type='l',xlim=c(0,10))#,show.title=FALSE,show.legend=FALSE) 
