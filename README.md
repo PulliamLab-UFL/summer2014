@@ -42,3 +42,21 @@ Write code for the stochastic model in Dushoff *et al*. 2004. To get started wit
 
 This week's lab meeting will be a troubleshooting session, guided by [Tom](http://pulliamlab-ufl.github.io/people/hladish.html). Benchmarks to aim for with your code will be added after the meeting, and you should make any necessary modifications to meet them by July 25.
 
+### For 25 July
+
+You should come to lab meeting with a final version of your code that meets the criteria below. Note that, if you have written your code in R, running a simulation with a population of 500,000 inidividuals will take an extremely long time, _even if your code is working properly_! You are not expected to reproduce the blue lines in Figure 1 using your R code!
+
+#### Benchmarks
+
+Your program should allow you to easily do these things:
+
+- Output the time until extinction for a single run of the Gillespie simulation
+- Return the amount of time it takes to run a single realization of the Gillespie algorithm
+- Explore the effect of using different parameter values on the dynamics observed (for an arbitrary population size)
+- Visually compare the ODE model trajectory to a single realization of the Gillespie implementation, with the same parameter values and initial conditions
+
+*Again, this doesn't necessarily mean that your code already does these things, but that it would take you a negligible amount of time for you to implement them, if someone were to ask you a specific question that requires any of these things.*
+
+### For 1 August
+
+Reproduce Figure 1 (both panels). You may want to use the GillespieSSA R package to do this, though you should feel free to do it through other means (e.g., coding the algorithm in C or C++, using an approximate algorithm that you write yourself, or even writing a more efficient pure R implementation
